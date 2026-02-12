@@ -5,6 +5,9 @@ FROM golang:1.25-alpine AS builder
 WORKDIR /app
 ARG TARGETARCH
 
+ENV GOPROXY=https://goproxy.cn,direct
+RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.aliyun.com/g' /etc/apk/repositories
+
 RUN apk --no-cache --update add \
   build-base \
   gcc \
@@ -24,6 +27,8 @@ RUN ./DockerInit.sh "$TARGETARCH"
 FROM alpine
 ENV TZ=Asia/Tehran
 WORKDIR /app
+
+RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.aliyun.com/g' /etc/apk/repositories
 
 RUN apk add --no-cache --update \
   ca-certificates \

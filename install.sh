@@ -10,6 +10,7 @@ cur_dir=$(pwd)
 
 xui_folder="${XUI_MAIN_FOLDER:=/usr/local/x-ui}"
 xui_service="${XUI_SERVICE:=/etc/systemd/system}"
+GH_PROXY="https://mirror.ghproxy.com/"
 
 # check root
 [[ $EUID -ne 0 ]] && echo -e "${red}Fatal error: ${plain} Please run this script with root privilege \n " && exit 1
@@ -112,7 +113,7 @@ gen_random_string() {
 install_acme() {
     echo -e "${green}Installing acme.sh for SSL certificate management...${plain}"
     cd ~ || return 1
-    curl -s https://get.acme.sh | sh >/dev/null 2>&1
+    curl -s "${GH_PROXY}https://raw.githubusercontent.com/acmesh-official/acme.sh/master/acme.sh" | sh >/dev/null 2>&1
     if [ $? -ne 0 ]; then
         echo -e "${red}Failed to install acme.sh${plain}"
         return 1
@@ -350,7 +351,7 @@ ssl_cert_issue() {
     if ! command -v ~/.acme.sh/acme.sh &>/dev/null; then
         echo "acme.sh could not be found. Installing now..."
         cd ~ || return 1
-        curl -s https://get.acme.sh | sh
+        curl -s "${GH_PROXY}https://raw.githubusercontent.com/acmesh-official/acme.sh/master/acme.sh" | sh
         if [ $? -ne 0 ]; then
             echo -e "${red}Failed to install acme.sh${plain}"
             return 1
@@ -775,7 +776,7 @@ install_x-ui() {
             fi
         fi
         echo -e "Got x-ui latest version: ${tag_version}, beginning the installation..."
-        curl -4fLRo ${xui_folder}-linux-$(arch).tar.gz https://github.com/MHSanaei/3x-ui/releases/download/${tag_version}/x-ui-linux-$(arch).tar.gz
+        curl -4fLRo ${xui_folder}-linux-$(arch).tar.gz ${GH_PROXY}https://github.com/MHSanaei/3x-ui/releases/download/${tag_version}/x-ui-linux-$(arch).tar.gz
         if [[ $? -ne 0 ]]; then
             echo -e "${red}Downloading x-ui failed, please be sure that your server can access GitHub ${plain}"
             exit 1
@@ -790,7 +791,7 @@ install_x-ui() {
             exit 1
         fi
         
-        url="https://github.com/MHSanaei/3x-ui/releases/download/${tag_version}/x-ui-linux-$(arch).tar.gz"
+        url="${GH_PROXY}https://github.com/MHSanaei/3x-ui/releases/download/${tag_version}/x-ui-linux-$(arch).tar.gz"
         echo -e "Beginning to install x-ui $1"
         curl -4fLRo ${xui_folder}-linux-$(arch).tar.gz ${url}
         if [[ $? -ne 0 ]]; then

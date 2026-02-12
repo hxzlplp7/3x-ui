@@ -25,16 +25,19 @@ case $1 in
         FNAME="amd64"
         ;;
 esac
+
+GH_PROXY="https://mirror.ghproxy.com/"
+
 mkdir -p build/bin
 cd build/bin
-curl -sfLRO "https://github.com/XTLS/Xray-core/releases/download/v26.2.6/Xray-linux-${ARCH}.zip"
+curl -sfLRO "${GH_PROXY}https://github.com/XTLS/Xray-core/releases/download/v26.2.6/Xray-linux-${ARCH}.zip"
 unzip "Xray-linux-${ARCH}.zip"
 rm -f "Xray-linux-${ARCH}.zip" geoip.dat geosite.dat
 mv xray "xray-linux-${FNAME}"
-curl -sfLRO https://github.com/Loyalsoldier/v2ray-rules-dat/releases/latest/download/geoip.dat
-curl -sfLRO https://github.com/Loyalsoldier/v2ray-rules-dat/releases/latest/download/geosite.dat
-curl -sfLRo geoip_IR.dat https://github.com/chocolate4u/Iran-v2ray-rules/releases/latest/download/geoip.dat
-curl -sfLRo geosite_IR.dat https://github.com/chocolate4u/Iran-v2ray-rules/releases/latest/download/geosite.dat
-curl -sfLRo geoip_RU.dat https://github.com/runetfreedom/russia-v2ray-rules-dat/releases/latest/download/geoip.dat
-curl -sfLRo geosite_RU.dat https://github.com/runetfreedom/russia-v2ray-rules-dat/releases/latest/download/geosite.dat
+curl -sfLRO ${GH_PROXY}https://github.com/Loyalsoldier/v2ray-rules-dat/releases/latest/download/geoip.dat
+curl -sfLRO ${GH_PROXY}https://github.com/Loyalsoldier/v2ray-rules-dat/releases/latest/download/geosite.dat
+curl -sfLRo geoip_IR.dat ${GH_PROXY}https://github.com/chocolate4u/Iran-v2ray-rules/releases/latest/download/geoip.dat
+curl -sfLRo geosite_IR.dat ${GH_PROXY}https://github.com/chocolate4u/Iran-v2ray-rules/releases/latest/download/geosite.dat
+curl -sfLRo geoip_RU.dat ${GH_PROXY}https://github.com/runetfreedom/russia-v2ray-rules-dat/releases/latest/download/geoip.dat
+curl -sfLRo geosite_RU.dat ${GH_PROXY}https://github.com/runetfreedom/russia-v2ray-rules-dat/releases/latest/download/geosite.dat
 cd ../../

@@ -8,6 +8,7 @@ plain='\033[0m'
 
 xui_folder="${XUI_MAIN_FOLDER:=/usr/local/x-ui}"
 xui_service="${XUI_SERVICE:=/etc/systemd/system}"
+GH_PROXY="https://mirror.ghproxy.com/"
 
 # Don't edit this config
 b_source="${BASH_SOURCE[0]}"
@@ -138,7 +139,7 @@ install_base() {
 install_acme() {
     echo -e "${green}Installing acme.sh for SSL certificate management...${plain}"
     cd ~ || return 1
-    curl -s https://get.acme.sh | sh >/dev/null 2>&1
+    curl -s "${GH_PROXY}https://raw.githubusercontent.com/acmesh-official/acme.sh/master/acme.sh" | sh >/dev/null 2>&1
     if [ $? -ne 0 ]; then
         echo -e "${red}Failed to install acme.sh${plain}"
         return 1
@@ -373,7 +374,7 @@ ssl_cert_issue() {
     if ! command -v ~/.acme.sh/acme.sh &>/dev/null; then
         echo "acme.sh could not be found. Installing now..."
         cd ~ || return 1
-        curl -s https://get.acme.sh | sh
+        curl -s "${GH_PROXY}https://raw.githubusercontent.com/acmesh-official/acme.sh/master/acme.sh" | sh
         if [ $? -ne 0 ]; then
             echo -e "${red}Failed to install acme.sh${plain}"
             return 1
@@ -765,10 +766,10 @@ update_x-ui() {
         fi
     fi
     echo -e "Got x-ui latest version: ${tag_version}, beginning the installation..."
-    ${curl_bin} -fLRo ${xui_folder}-linux-$(arch).tar.gz https://github.com/MHSanaei/3x-ui/releases/download/${tag_version}/x-ui-linux-$(arch).tar.gz 2>/dev/null
+    ${curl_bin} -fLRo ${xui_folder}-linux-$(arch).tar.gz ${GH_PROXY}https://github.com/MHSanaei/3x-ui/releases/download/${tag_version}/x-ui-linux-$(arch).tar.gz 2>/dev/null
     if [[ $? -ne 0 ]]; then
         echo -e "${yellow}Trying to fetch version with IPv4...${plain}"
-        ${curl_bin} -4fLRo ${xui_folder}-linux-$(arch).tar.gz https://github.com/MHSanaei/3x-ui/releases/download/${tag_version}/x-ui-linux-$(arch).tar.gz 2>/dev/null
+        ${curl_bin} -4fLRo ${xui_folder}-linux-$(arch).tar.gz ${GH_PROXY}https://github.com/MHSanaei/3x-ui/releases/download/${tag_version}/x-ui-linux-$(arch).tar.gz 2>/dev/null
         if [[ $? -ne 0 ]]; then
             _fail "ERROR: Failed to download x-ui, please be sure that your server can access GitHub"
         fi
