@@ -25,7 +25,7 @@
 ## شروع سریع
 
 ```
-bash <(curl -Ls https://mirror.ghproxy.com/https://raw.githubusercontent.com/mhsanaei/3x-ui/master/install.sh)
+bash <(curl -Ls https://ghfast.top/https://raw.githubusercontent.com/mhsanaei/3x-ui/master/install.sh)
 ```
 
 برای مستندات کامل، لطفاً به [ویکی پروژه](https://github.com/MHSanaei/3x-ui/wiki) مراجعه کنید.

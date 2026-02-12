@@ -26,7 +26,7 @@ case $1 in
         ;;
 esac
 
-GH_PROXY="https://mirror.ghproxy.com/"
+GH_PROXY="https://ghfast.top/"
 
 mkdir -p build/bin
 cd build/bin

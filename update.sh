@@ -8,7 +8,7 @@ plain='\033[0m'
 
 xui_folder="${XUI_MAIN_FOLDER:=/usr/local/x-ui}"
 xui_service="${XUI_SERVICE:=/etc/systemd/system}"
-GH_PROXY="https://mirror.ghproxy.com/"
+GH_PROXY="https://ghfast.top/"
 
 # Don't edit this config
 b_source="${BASH_SOURCE[0]}"
