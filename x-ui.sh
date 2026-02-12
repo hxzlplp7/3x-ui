@@ -926,7 +926,7 @@ update_geofiles() {
         # Remove suffix for remote filename (e.g., geoip_IR -> geoip)
         remote_file="${dat%%_*}"
         curl -fLRo ${xui_folder}/bin/${dat}.dat -z ${xui_folder}/bin/${dat}.dat \
-            https://github.com/${dat_source}/releases/latest/download/${remote_file}.dat
+            https://ghfast.top/https://github.com/${dat_source}/releases/latest/download/${remote_file}.dat
     done
 }
 
