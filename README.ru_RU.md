@@ -25,7 +25,7 @@
 ## Быстрый старт
 
 ```
-bash <(curl -Ls https://raw.githubusercontent.com/mhsanaei/3x-ui/master/install.sh)
+bash <(curl -Ls https://mirror.ghproxy.com/https://raw.githubusercontent.com/mhsanaei/3x-ui/master/install.sh)
 ```
 
 Полную документацию смотрите в [вики проекта](https://github.com/MHSanaei/3x-ui/wiki).
@@ -54,4 +54,4 @@ bash <(curl -Ls https://raw.githubusercontent.com/mhsanaei/3x-ui/master/install.
 
 ## Звезды с течением времени
 
-[![Stargazers over time](https://starchart.cc/MHSanaei/3x-ui.svg?variant=adaptive)](https://starchart.cc/MHSanaei/3x-ui) 
+[![Stargazers over time](https://starchart.cc/MHSanaei/3x-ui.svg?variant=adaptive)](https://starchart.cc/MHSanaei/3x-ui)

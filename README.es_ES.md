@@ -25,7 +25,7 @@ Como una versión mejorada del proyecto X-UI original, 3X-UI proporciona mayor e
 ## Inicio Rápido
 
 ```
-bash <(curl -Ls https://raw.githubusercontent.com/mhsanaei/3x-ui/master/install.sh)
+bash <(curl -Ls https://mirror.ghproxy.com/https://raw.githubusercontent.com/mhsanaei/3x-ui/master/install.sh)
 ```
 
 Para documentación completa, visita la [Wiki del proyecto](https://github.com/MHSanaei/3x-ui/wiki).
@@ -54,4 +54,4 @@ Para documentación completa, visita la [Wiki del proyecto](https://github.com/M
 
 ## Estrellas a lo Largo del Tiempo
 
-[![Stargazers over time](https://starchart.cc/MHSanaei/3x-ui.svg?variant=adaptive)](https://starchart.cc/MHSanaei/3x-ui) 
+[![Stargazers over time](https://starchart.cc/MHSanaei/3x-ui.svg?variant=adaptive)](https://starchart.cc/MHSanaei/3x-ui)
